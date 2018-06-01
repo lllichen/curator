@@ -21,9 +21,10 @@ public class ExampleServer implements Closeable{
     public ExampleServer(CuratorFramework client, String path, String serviceName, String description) throws Exception {
 
         // in a real application,you'd have a convention of some kind of the UIR layout
-        UriSpec uriSpec = new UriSpec( "{schema}://foo.com:{port}" );
+        UriSpec uriSpec = new UriSpec( "{scheme}://foo.com:{port}" );
 
-        thisInstance = ServiceInstance.<InstanceDetails>builder().name( serviceName )
+        thisInstance = ServiceInstance.<InstanceDetails>builder()
+                .name( serviceName )
                 .payload( new InstanceDetails( description ) )
                 .port( (int)(65535 * Math.random()) )
                 .uriSpec(uriSpec)
