@@ -1,7 +1,6 @@
 package exercise.leader;
 
 import com.google.common.collect.Lists;
-import com.sun.org.apache.xpath.internal.SourceTree;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
@@ -9,7 +8,6 @@ import org.apache.curator.test.TestingServer;
 import org.apache.curator.utils.CloseableUtils;
 
 import java.io.BufferedReader;
-import java.io.Closeable;
 import java.io.InputStreamReader;
 import java.util.List;
 

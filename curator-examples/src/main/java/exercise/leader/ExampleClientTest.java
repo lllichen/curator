@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Created by lichen@daojia.com on 2018-5-30.
  */
-public class ExampleClient extends LeaderSelectorListenerAdapter implements Closeable{
+public class ExampleClientTest extends LeaderSelectorListenerAdapter implements Closeable{
 
     private final String name;
 
@@ -21,7 +21,7 @@ public class ExampleClient extends LeaderSelectorListenerAdapter implements Clos
     private final AtomicInteger leaderCount = new AtomicInteger( );
 
 
-    public ExampleClient(CuratorFramework client,String path, String name) {
+    public ExampleClientTest(CuratorFramework client, String path, String name) {
         this.name = name;
 
         //create a leader selector using the given path for management
@@ -49,10 +49,9 @@ public class ExampleClient extends LeaderSelectorListenerAdapter implements Clos
     public void takeLeadership(CuratorFramework client) throws Exception {
 
         // we are now the leader. This method should not return until we want to relinquish leadership
-        final int  waitSeconds = (int)((50 * Math.random())+1);
+        final int  waitSeconds = (int)((5000 * Math.random())+1);
 
         System.out.println(name + " is now the leader.Waiting "+ waitSeconds + " seconds...");
-        System.out.println(name + " has been leader " + leaderCount.getAndIncrement() + " time(s) before.");
         try {
             Thread.sleep( TimeUnit.SECONDS.toMillis( waitSeconds ) );
         }catch (InterruptedException e){
