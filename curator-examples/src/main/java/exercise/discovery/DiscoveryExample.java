@@ -38,7 +38,8 @@ public class DiscoveryExample {
         ServiceDiscovery<InstanceDetails> serviceDiscovery;
         Map<String, ServiceProvider<InstanceDetails>> providers = Maps.newHashMap();
 
-        client = CuratorFrameworkFactory.newClient( server.getConnectString(),new ExponentialBackoffRetry( 1000,3 ) );
+//        client = CuratorFrameworkFactory.newClient( server.getConnectString(),new ExponentialBackoffRetry( 1000,3 ) );
+        client = CuratorFrameworkFactory.newClient( "127.0.0.1:2181",new ExponentialBackoffRetry( 1000,3 ) );
         client.start();
 
         JsonInstanceSerializer<InstanceDetails> serializer = new JsonInstanceSerializer<InstanceDetails>( InstanceDetails.class );

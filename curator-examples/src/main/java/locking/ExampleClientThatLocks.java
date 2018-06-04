@@ -35,7 +35,7 @@ public class ExampleClientThatLocks
         lock = new InterProcessMutex(client, lockPath);
     }
 
-    public void     doWork(long time, TimeUnit unit) throws Exception
+    public void doWork(long time, TimeUnit unit) throws Exception
     {
         if ( !lock.acquire(time, unit) )
         {
