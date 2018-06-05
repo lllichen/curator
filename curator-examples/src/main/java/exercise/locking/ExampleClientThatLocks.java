@@ -37,7 +37,7 @@ public class ExampleClientThatLocks {
         }finally
         {
             System.out.println(clientName + " releasing the lock");
-            lock.release(); // always release the lock in a finally block
+            lock.release(); // always release the lock in
 
         }
 

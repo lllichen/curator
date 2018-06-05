@@ -31,14 +31,14 @@ public class LockingExample {
 
         ExecutorService service = Executors.newFixedThreadPool( QIY );
 
-        final TestingServer server = new TestingServer(  );
+        final TestingServer server = new TestingServer();
 
         try
         {
             for (int i = 0; i < QIY ; ++i) {
                 final int  index = i;
                 Callable<Void> task = () -> {
-                    CuratorFramework client = CuratorFrameworkFactory.newClient( server.getConnectString(),new ExponentialBackoffRetry( 1000,3 ) );
+                    CuratorFramework client = CuratorFrameworkFactory.newClient( "127.0.0.1:2181",new ExponentialBackoffRetry( 1000,3 ) );
                     try {
                         client.start();
                         ExampleClientThatLocks example = new ExampleClientThatLocks( client,PATH,resource,"Client "+index );
