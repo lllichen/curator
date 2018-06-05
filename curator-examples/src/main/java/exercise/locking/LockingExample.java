@@ -53,6 +53,7 @@ public class LockingExample {
                     }
                     catch (Exception e)
                     {
+
                         //log or do something
                     }
                     finally

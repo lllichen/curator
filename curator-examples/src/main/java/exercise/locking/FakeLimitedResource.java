@@ -16,13 +16,14 @@ public class FakeLimitedResource {
     public void use() throws InterruptedException {
 
         // in a real application this would be accessing/manipulating a shared resource
+        System.out.println("now is : "+ isUse.get());
         if (!isUse.compareAndSet( false,true ) ){
             throw new IllegalStateException( "Needs to be used by one client at a time" );
         }
 
         try
         {
-            Thread.sleep( (long) (3 * Math.random()));
+            Thread.sleep( 3000);
         }finally
         {
             isUse.set( false );

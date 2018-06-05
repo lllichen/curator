@@ -1,7 +1,6 @@
 package exercise.locking;
 
 import org.apache.curator.framework.CuratorFramework;
-import org.apache.curator.framework.recipes.locks.InterProcessLock;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 
 import java.util.concurrent.TimeUnit;
@@ -27,7 +26,9 @@ public class ExampleClientThatLocks {
 
     public void doWork(long time, TimeUnit unit) throws Exception {
 
+        System.out.println(clientName + " is ready to acquire the lock");
         if (!lock.acquire( time,unit )){
+            System.out.println(clientName + "acquire error");
             throw new IllegalStateException( clientName +" could not acquire the lock");
         }
         try
