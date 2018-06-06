@@ -4,7 +4,6 @@ import framework.CreateClientExamples;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.recipes.cache.TreeCache;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -28,7 +27,7 @@ public class TreeCacheExample {
 
         client.start();
 
-        TreeCache cache = TreeCache.newBuilder( client,"/" ).setCacheData( false ).build();
+        TreeCache cache = TreeCache.newBuilder( client,"/" ).setCacheData( true ).build();
         cache.getListenable().addListener( (c,event)->{
             if (event.getData() != null)
             {
